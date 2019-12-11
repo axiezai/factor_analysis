@@ -1,8 +1,6 @@
 
 %-----------------------------------------------------------------------
 
-
-
 function [a,lam,xbar]=bfa(y,nl,nem,a_init,lam_init);
 
 % vb-em algorithm for inferring the factor analysis model   y = a*x + v
@@ -17,6 +15,8 @@ function [a,lam,xbar]=bfa(y,nl,nem,a_init,lam_init);
 % nt = number of time points
 % nl = number of factors
 % nem = number of em iterations
+
+% use no more than 5 factors
 
 nk=size(y,1);
 nt=size(y,2);
@@ -37,7 +37,7 @@ end
 % em iteration
 
 like=zeros(nem,1);
-alapsi=a'*lam*a;
+alapsi=a'*lam*a; % intermediate variable, a lambda a transposed psi
 
 for iem=1:nem
    gam=alapsi+eye(nl);
