@@ -25,7 +25,7 @@ nt=size(y,2);
 
 ryy=y*y';
 if a_init==0
-   [p d q]=svd(ryy/nt);d=diag(d);
+   [p, d, q]=svd(ryy/nt);d=diag(d);
    a=p*diag(sqrt(d));
    a=a(:,1:nl);
    lam=diag(nt./diag(ryy));
