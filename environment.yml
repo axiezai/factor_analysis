@@ -1,0 +1,10 @@
+name: factor_analysis
+channels:
+  - conda-forge
+dependencies:
+  - python=3 #any python 3 should work
+  - numpy
+  - pip
+  - matplotlib
+  - scipy
+  - qt
