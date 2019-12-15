@@ -11,17 +11,22 @@ Files:
  - `bfa.m` original `Matlab` code.
  - `vb_factor_analysis.ipynb` the IPython notebook implementation showing an example with AEF MEG dataset.
  - `environment.yml` is the basic requirements to run the IPython notebook.
+ - `nutmeg_data.mat` is the example AEF MEG data.
 
 ### Set-up:
-Most Python users should have the following packages installed:
+Most Python users should have the following packages installed, if not, please install [anaconda](https://www.anaconda.com/distribution/), which conveniently installs Python, Jupyter notebook, and other commonly used packages:
  - numpy
  - matplotlib
  - scipy
  - qt
+ - jupyter
 
-If you do not, then clone this repository and set up the conda environment with the command: `conda env create -f environment.yml`
+
+Or if you do not want to install `anaconda`, then clone this repository and set up the conda environment with the command: `conda env create -f environment.yml`
 
 ### Usage:
+Simply type `jupyter notebook` in your terminal while in the repository's folder. 
+
 Be careful with the IPython magic for `matplotlib`, it should only be called once. The notebook defaults to `%matplotlib inline` where the plots are produced after each cell is run in the notebook, but because notebooks can't update plots in a for-loop (I couldn't figure out the animation capabilities yet), we have to call `%matplotlib qt` once before running the EM portion of the code, then a pop-up window will appear that displays the updating plots. If you are repeatedly running a cell with the EM update plots, remove `%matplotlib qt` the second time you run it.
 
 The notebook starts by loading the data, then goes on a step-by-step walk-through of the factor analysis code, the entire algorithm is then compiled into one function in the end.
@@ -46,4 +51,4 @@ def bfa(y, num_fa, num_it, mixing_matrix = None, noise_precision = None):
         - igamma - the variance matrix
     """
 ```
-There is an example where we make use of the `bfa` function that initializes with a random mixing matrix.
+There is an example where we make use of the `bfa` function that initializes with a random mixing matrix. This initialization condition requires a LOT more iterations to converge (way more than 100).
